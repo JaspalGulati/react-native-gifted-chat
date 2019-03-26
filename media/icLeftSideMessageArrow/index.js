@@ -1,0 +1,1 @@
+export const icLeftSideMessageArrow = require("./icLeftSideMessageArrow.png");
