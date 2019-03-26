@@ -206,10 +206,8 @@ export default class Bubble extends React.Component {
 const styles = {
   left: StyleSheet.create({
     container: {
-      // backgroundColor: 'red',
       flex: 1,
-      alignItems: 'flex-start',
-      // flexDirection: 'row'
+      alignItems: 'flex-start'
     },
     wrapper: {
       borderBottomLeftRadius: 2,
@@ -218,7 +216,6 @@ const styles = {
       backgroundColor: '#ffffff',
       marginRight: 60,
       minHeight: 50,
-      // justifyContent: 'flex-end',
       padding: 2
     },
     containerToNext: {
@@ -235,9 +232,7 @@ const styles = {
   right: StyleSheet.create({
     container: {
       flex: 1,
-      // backgroundColor: 'orange',
-      alignItems: 'flex-end',
-      // flexDirection: 'row'
+      alignItems: 'flex-end'
     },
     wrapper: {
       borderBottomLeftRadius: 2,
@@ -246,8 +241,6 @@ const styles = {
       backgroundColor: 'rgb(0,174,239)',
       marginLeft: 60,
       minHeight: 50,
-      // alignSelf: 'flex-end',
-      // justifyContent: 'flex-end',
       padding: 2
     },
     containerToNext: {

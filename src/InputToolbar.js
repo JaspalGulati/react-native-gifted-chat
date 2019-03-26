@@ -106,9 +106,6 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 4,
     shadowOpacity: 1,
-
-    // borderTopWidth: StyleSheet.hairlineWidth,
-    // borderTopColor: Color.defaultColor,
     backgroundColor: Color.white,
     bottom: 0,
     left: 0,
