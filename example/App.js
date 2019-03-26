@@ -209,7 +209,7 @@ export default class Example extends React.Component {
         loadEarlier={this.state.loadEarlier}
         onLoadEarlier={this.onLoadEarlier}
         isLoadingEarlier={this.state.isLoadingEarlier}
-
+        
         user={{
           _id: 1, // sent messages should have same user._id
         }}
