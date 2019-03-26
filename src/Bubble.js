@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Text, Clipboard, StyleSheet, TouchableWithoutFeedback, View, ViewPropTypes } from 'react-native';
+import { Image, Text, Clipboard, StyleSheet, TouchableWithoutFeedback, View, ViewPropTypes } from 'react-native';
 
 import MessageText from './MessageText';
 import MessageImage from './MessageImage';
@@ -12,6 +12,9 @@ import Time from './Time';
 import Color from './Color';
 
 import { isSameUser, isSameDay } from './utils';
+
+import { icLeftSideMessageArrow } from '../media/icLeftSideMessageArrow';
+import { icRightSideMessageArrow } from '../media/icRightSideMessageArrow';
 
 export default class Bubble extends React.Component {
 
@@ -157,33 +160,44 @@ export default class Bubble extends React.Component {
   render() {
     return (
       <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
-        <View
-          style={[
-            styles[this.props.position].wrapper,
-            this.props.wrapperStyle[this.props.position],
-            this.handleBubbleToNext(),
-            this.handleBubbleToPrevious(),
-          ]}
-        >
-          <TouchableWithoutFeedback
-            onLongPress={this.onLongPress}
-            accessibilityTraits="text"
-            {...this.props.touchableProps}
+
+        <View style={{ flexDirection: 'row' }}>
+          {(this.props.position == 'left') ?
+            <Image source={icLeftSideMessageArrow} style={{ backgroundColor: 'pink', height: 6, width: 5 }} resizeMode='contain' />
+            :
+            null}
+          <View
+            style={[
+              styles[this.props.position].wrapper,
+              this.props.wrapperStyle[this.props.position],
+              this.handleBubbleToNext(),
+              this.handleBubbleToPrevious(),
+            ]}
           >
-            <View>
-              {this.renderCustomView()}
-              {this.renderMessageImage()}
-              {this.renderMessageVideo()}
-              {this.renderMessageText()}
-              <View style={[styles[this.props.position].bottom, this.props.bottomContainerStyle[this.props.position]]}>
-                {this.renderUsername()}
-                {this.renderTime()}
-                {this.renderTicks()}
+            <TouchableWithoutFeedback
+              onLongPress={this.onLongPress}
+              accessibilityTraits="text"
+              {...this.props.touchableProps}
+            >
+              <View>
+                {this.renderCustomView()}
+                {this.renderMessageImage()}
+                {this.renderMessageVideo()}
+                {this.renderMessageText()}
+                <View style={[styles[this.props.position].bottom, this.props.bottomContainerStyle[this.props.position]]}>
+                  {this.renderUsername()}
+                  {this.renderTime()}
+                  {this.renderTicks()}
+                </View>
               </View>
-            </View>
-          </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback>
+          </View>
+          {(this.props.position == 'right') ?
+            <Image resizeMode={'contain'} source={icRightSideMessageArrow} style={{ height: 6, width: 5 }} />
+            :
+            null}
         </View>
-      </View>
+      </View >
     );
   }
 
@@ -193,14 +207,16 @@ const styles = {
   left: StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'flex-start',
+      alignItems: 'flex-start'
     },
     wrapper: {
-      borderRadius: 15,
-      backgroundColor: Color.leftBubbleBackground,
+      borderBottomLeftRadius: 2,
+      borderBottomRightRadius: 2,
+      borderTopRightRadius: 2,
+      backgroundColor: '#ffffff',
       marginRight: 60,
-      minHeight: 20,
-      justifyContent: 'flex-end',
+      minHeight: 50,
+      padding: 2
     },
     containerToNext: {
       borderBottomLeftRadius: 3,
@@ -210,20 +226,22 @@ const styles = {
     },
     bottom: {
       flexDirection: 'row',
-      justifyContent: 'flex-start',
+      justifyContent: 'flex-start'
     },
   }),
   right: StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'flex-end',
+      alignItems: 'flex-end'
     },
     wrapper: {
-      borderRadius: 15,
-      backgroundColor: Color.defaultBlue,
+      borderBottomLeftRadius: 2,
+      borderBottomRightRadius: 2,
+      borderTopLeftRadius: 2,
+      backgroundColor: 'rgb(0,174,239)',
       marginLeft: 60,
-      minHeight: 20,
-      justifyContent: 'flex-end',
+      minHeight: 50,
+      padding: 2
     },
     containerToNext: {
       borderBottomRightRadius: 3,

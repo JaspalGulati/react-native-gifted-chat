@@ -56,18 +56,26 @@ export default class Composer extends React.Component {
 
 const styles = StyleSheet.create({
   textInput: {
+    height: 40,
+    borderRadius: 20,
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "#dedede",
+    marginVertical: 8,
+    marginHorizontal: 8,
     flex: 1,
-    marginLeft: 10,
-    fontSize: 16,
-    lineHeight: 16,
-    marginTop: Platform.select({
-      ios: 6,
-      android: 0,
-    }),
-    marginBottom: Platform.select({
-      ios: 5,
-      android: 3,
-    }),
+    paddingHorizontal: 8,
+    // marginLeft: 10,
+    fontSize: 12,
+    lineHeight: 12,
+    // marginTop: Platform.select({
+    //   ios: 6,
+    //   android: 0,
+    // }),
+    // marginBottom: Platform.select({
+    //   ios: 5,
+    //   android: 3,
+    // }),
   },
 });
 
@@ -81,8 +89,8 @@ Composer.defaultProps = {
   textInputStyle: {},
   textInputAutoFocus: false,
   keyboardAppearance: 'default',
-  onTextChanged: () => {},
-  onInputSizeChanged: () => {},
+  onTextChanged: () => { },
+  onInputSizeChanged: () => { },
 };
 
 Composer.propTypes = {

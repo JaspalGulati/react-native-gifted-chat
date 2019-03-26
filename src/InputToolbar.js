@@ -98,8 +98,14 @@ export default class InputToolbar extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: Color.defaultColor,
+    height: 56,
+    shadowColor: "rgba(0, 0, 0, 0.05)",
+    shadowOffset: {
+      width: 0,
+      height: 0
+    },
+    shadowRadius: 4,
+    shadowOpacity: 1,
     backgroundColor: Color.white,
     bottom: 0,
     left: 0,
@@ -122,7 +128,7 @@ InputToolbar.defaultProps = {
   containerStyle: {},
   primaryStyle: {},
   accessoryStyle: {},
-  onPressActionButton: () => {},
+  onPressActionButton: () => { },
 };
 
 InputToolbar.propTypes = {

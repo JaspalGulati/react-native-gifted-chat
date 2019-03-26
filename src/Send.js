@@ -2,8 +2,9 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, ViewPropTypes } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View, ViewPropTypes } from 'react-native';
 import Color from './Color';
+import { icSendChat } from '../media/icSendChat';
 
 export default function Send({ text, containerStyle, onSend, children, textStyle, label, alwaysShowSend, disabled }) {
   if (alwaysShowSend || text.trim().length > 0) {
@@ -18,8 +19,9 @@ export default function Send({ text, containerStyle, onSend, children, textStyle
         }}
         accessibilityTraits="button"
         disabled={disabled}
+        activeOpacity={0.8}
       >
-        <View>{children || <Text style={[styles.text, textStyle]}>{label}</Text>}</View>
+        <Image resizeMode={'contain'} source={icSendChat} style={styles.sendIconImage} />
       </TouchableOpacity>
     );
   }
@@ -28,8 +30,16 @@ export default function Send({ text, containerStyle, onSend, children, textStyle
 
 const styles = StyleSheet.create({
   container: {
-    height: 44,
-    justifyContent: 'flex-end',
+    width: 40,
+    height: 40,
+    marginVertical: 8,
+    marginRight: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    borderStyle: "solid",
+    borderWidth: 0.8,
+    borderColor: "#dedede"
   },
   text: {
     color: Color.defaultBlue,
@@ -40,11 +50,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
   },
+  sendIconImage: {
+    width: 19,
+    height: 17
+  }
 });
 
 Send.defaultProps = {
   text: '',
-  onSend: () => {},
+  onSend: () => { },
   label: 'Send',
   containerStyle: {},
   textStyle: {},
